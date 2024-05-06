@@ -13,6 +13,7 @@ function App() {
   const [isHolidayWidgetRemoved, setIsHolidayWidgetRemoved] = useState(storage ? storage.holiday : false)
   const [isPrayTimeWidgetRemoved, setIsPrayTimeWidgetRemoved] = useState(storage ? storage.prayTime : false)
   const [isQuoteWidgetRemoved, setIsQuoteWidgetRemoved] = useState(storage ? storage.quote : false)
+  const day = new Date().getDate()
 
   function handleRemovedWidget(
     key: "holiday" | "prayTime" | "quote",
@@ -51,7 +52,7 @@ function App() {
                 {new Date().toLocaleString("en-EN", { month: "long" })}'s public holidays 🏝️
               </h3>
               <button
-                className="w-8 h-8 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
+                className="w-8 h-8 -mr-2 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
                 onClick={() => handleRemovedWidget("holiday", setIsHolidayWidgetRemoved)}
               >
                 <img src="/x.svg" className="w-4 h-4" alt="close-icon" />
@@ -86,29 +87,33 @@ function App() {
           <div className="w-full sm:w-1/3 border border-gray-300 dark:bg-transparent rounded-md px-6 py-4">
             <div className="mb-2">
               <div className="flex justify-between">
-                <h3 className="text-lg font-semibold">Prayer time 🤲</h3>
+                <h3 className="text-lg font-semibold">
+                  Prayer time (Jakarta,{" "}
+                  {prayTime &&
+                    new Date(prayTime?.prayers[day - 1].date).toLocaleString("en-EN", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  ) 🤲
+                </h3>
                 <button
-                  className="w-8 h-8 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
+                  className="w-8 h-8 -mr-2 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
                   onClick={() => handleRemovedWidget("prayTime", setIsPrayTimeWidgetRemoved)}
                 >
                   <img src="/x.svg" className="w-4 h-4" alt="close-icon" />
                 </button>
               </div>
-              {prayTime && (
-                <span>
-                  Timezone: {prayTime?.meta.timezone} ({prayTime?.date.readable})
-                </span>
-              )}
             </div>
             {errorPrayTime && <p>Error loading prayer time!</p>}
             {isLoadingPrayTime && <p>Loading prayer time...</p>}
             {prayTime && (
               <>
-                <p>1. Fajr : {prayTime.timings.Fajr}</p>
-                <p>2. Dhuhr : {prayTime.timings.Dhuhr}</p>
-                <p>3. Asr : {prayTime.timings.Asr}</p>
-                <p>4. Maghrib : {prayTime.timings.Maghrib}</p>
-                <p>5. Isha : {prayTime.timings.Isha}</p>
+                <p>1. Fajr : {prayTime.prayers[day - 1].time.subuh} (WIB)</p>
+                <p>2. Dhuhr : {prayTime.prayers[day - 1].time.dzuhur} (WIB)</p>
+                <p>3. Asr : {prayTime.prayers[day - 1].time.ashar} (WIB)</p>
+                <p>4. Maghrib : {prayTime.prayers[day - 1].time.maghrib} (WIB)</p>
+                <p>5. Isha : {prayTime.prayers[day - 1].time.isya} (WIB)</p>
               </>
             )}
           </div>

@@ -5,25 +5,31 @@ export interface Holiday {
 }
 
 export interface PrayTime {
-  date: {
-    readable: string
+  name: string
+  slug: string
+  provinceId: string
+  province: {
+    id: string
+    name: string
+    slug: string
   }
-  meta: {
-    timezone: string
+  prayers: Prayer[]
+}
+
+interface Prayer {
+  time: {
+    imsak: string
+    subuh: string
+    terbit: string
+    dhuha: string
+    dzuhur: string
+    ashar: string
+    maghrib: string
+    isya: string
   }
-  timings: {
-    Fajr: string
-    Sunrise: string
-    Dhuhr: string
-    Asr: string
-    Sunset: string
-    Maghrib: string
-    Isha: string
-    Imsak: string
-    Midnight: string
-    Firstthird: string
-    Lastthird: string
-  }
+  id: string
+  date: string
+  cityId: string
 }
 
 export interface LocalStorage {

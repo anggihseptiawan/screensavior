@@ -13,13 +13,6 @@ export const holidaysFetcher = (): Promise<Holiday[]> =>
     .then((data) => data)
 
 export const prayerFetcher = (): Promise<PrayTime> =>
-  fetch(
-    `${API_URL_JADWAL_SHOLAT}/calendarByCity/${date.getFullYear()}/${
-      date.getMonth() + 1
-    }?city=Jakarta&country=Indonesia&method=4`,
-  )
+  fetch(`${API_URL_JADWAL_SHOLAT}/prayer?latitude=-6.16975233&longitude=106.9289751`)
     .then((res) => res.json())
-    .then((data) => {
-      const day = date.getDate()
-      return data.data[day - 1]
-    })
+    .then((data) => data)

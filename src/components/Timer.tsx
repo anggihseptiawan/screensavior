@@ -36,7 +36,7 @@ export const Timer = ({
     return () => clearInterval(interval)
   }, [])
 
-  const timeClass = `text-[160px] ${isBottomWidgetRemoved() ? "sm:text-[400px]" : "sm:text-[300px]"} text-center`
+  const timeClass = `text-[160px] ${isBottomWidgetRemoved() ? "sm:text-[300px] 2xl:text-[420px]" : "sm:text-[220px] 2xl:text-[350px]"} text-center`
 
   return (
     <>
@@ -60,12 +60,17 @@ export const Timer = ({
       )}
 
       <button className="cursor-pointer opacity-0"></button>
-      <div className="flex justify-center gap-6 -mt-24">
-        <div className={`flex flex-wrap gap-4 ${isBottomWidgetRemoved() ? "sm:gap-28" : "sm:gap-20"}`}>
-          <h2 className={timeClass}>{time.hour}</h2>
-          <h2 className={timeClass}>{time.minute}</h2>
+      <div className="relative">
+        <p className="text-lg 2xl:text-2xl text-center font-semibold">
+          {new Date().toLocaleString("en-EN", { day: "numeric", month: "long", year: "numeric" })}
+        </p>
+        <h5 className="absolute right-36 2xl:right-44 text-4xl 2xl:pt-12 font-semibold">{time.ampm}</h5>
+        <div className="flex justify-center gap-6 -mt-24 2xl:-mt-28">
+          <div className={`flex flex-wrap gap-4 ${isBottomWidgetRemoved() ? "sm:gap-28" : "sm:gap-20"}`}>
+            <h2 className={timeClass}>{time.hour}</h2>
+            <h2 className={timeClass}>{time.minute}</h2>
+          </div>
         </div>
-        <h5 className="text-4xl font-semibold pt-28">{time.ampm}</h5>
       </div>
     </>
   )
