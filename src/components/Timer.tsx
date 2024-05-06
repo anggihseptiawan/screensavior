@@ -36,7 +36,7 @@ export const Timer = ({
     return () => clearInterval(interval)
   }, [])
 
-  const timeClass = `text-[160px] ${isBottomWidgetRemoved() ? "sm:text-[300px] 2xl:text-[420px]" : "sm:text-[220px] 2xl:text-[350px]"} text-center`
+  const timeClass = `font-semibold tracking-tight text-[160px] ${isBottomWidgetRemoved() ? "sm:text-[300px] 2xl:text-[420px]" : "sm:text-[220px] 2xl:text-[350px]"} text-center`
 
   return (
     <>
