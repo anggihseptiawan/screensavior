@@ -5,6 +5,7 @@ import { ResetButton } from "./components/ResetButton"
 import { getLocalStorage } from "./utils/getLocalStorage"
 import useSWR from "swr"
 import { holidaysFetcher, prayerFetcher } from "./utils/fetcher"
+import { hourFormat } from "./utils/hourFormat"
 
 function App() {
   const storage = getLocalStorage()
@@ -48,7 +49,7 @@ function App() {
         {!isHolidayWidgetRemoved && (
           <div className="w-full sm:w-1/3 border border-gray-300 dark:bg-transparent rounded-md px-6 py-4">
             <div className="flex justify-between">
-              <h3 className="text-lg font-semibold mb-3">
+              <h3 className="font-semibold mb-3">
                 {new Date().toLocaleString("en-EN", { month: "long" })}'s public holidays 🏝️
               </h3>
               <button
@@ -87,7 +88,7 @@ function App() {
           <div className="w-full sm:w-1/3 border border-gray-300 dark:bg-transparent rounded-md px-6 py-4">
             <div className="mb-2">
               <div className="flex justify-between">
-                <h3 className="text-lg font-semibold">
+                <h3 className="font-semibold">
                   Prayer time (Jakarta,{" "}
                   {prayTime &&
                     new Date(prayTime?.prayers[day - 1].date).toLocaleString("en-EN", {
@@ -109,11 +110,26 @@ function App() {
             {isLoadingPrayTime && <p>Loading prayer time...</p>}
             {prayTime && (
               <>
-                <p>1. Fajr : {prayTime.prayers[day - 1].time.subuh} (WIB)</p>
-                <p>2. Dhuhr : {prayTime.prayers[day - 1].time.dzuhur} (WIB)</p>
-                <p>3. Asr : {prayTime.prayers[day - 1].time.ashar} (WIB)</p>
-                <p>4. Maghrib : {prayTime.prayers[day - 1].time.maghrib} (WIB)</p>
-                <p>5. Isha : {prayTime.prayers[day - 1].time.isya} (WIB)</p>
+                <div className="flex">
+                  <p className="w-[90px]">1. Fajr </p>
+                  <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.subuh)}</p>
+                </div>
+                <div className="flex">
+                  <p className="w-[90px]">2. Dhuhr </p>
+                  <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.dzuhur)}</p>
+                </div>
+                <div className="flex">
+                  <p className="w-[90px]">3. Asr </p>
+                  <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.ashar)}</p>
+                </div>
+                <div className="flex">
+                  <p className="w-[90px]">4. Maghrib </p>
+                  <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.maghrib)}</p>
+                </div>
+                <div className="flex">
+                  <p className="w-[90px]">5. Isha </p>
+                  <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.isya)}</p>
+                </div>
               </>
             )}
           </div>
