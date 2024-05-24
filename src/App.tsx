@@ -53,7 +53,7 @@ function App() {
                 {new Date().toLocaleString("en-EN", { month: "long" })}'s public holidays 🏝️
               </h3>
               <button
-                className="w-8 h-8 -mr-2 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
+                className="relative z-10 w-8 h-8 -mr-3 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
                 onClick={() => handleRemovedWidget("holiday", setIsHolidayWidgetRemoved)}
               >
                 <img src="/x.svg" className="w-4 h-4" alt="close-icon" />
@@ -99,7 +99,7 @@ function App() {
                   ) 🤲
                 </h3>
                 <button
-                  className="w-8 h-8 -mr-2 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
+                  className="relative z-10 w-8 h-8 -mr-3 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
                   onClick={() => handleRemovedWidget("prayTime", setIsPrayTimeWidgetRemoved)}
                 >
                   <img src="/x.svg" className="w-4 h-4" alt="close-icon" />

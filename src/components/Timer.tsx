@@ -50,7 +50,7 @@ export const Timer = ({
             {error && <p>Error loading your quotes!</p>}
             <p className="flex-1">{data}</p>
             <button
-              className="w-8 h-8 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
+              className="relative z-10 w-8 h-8 flex justify-center items-center border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer dark:invert hover:invert-0"
               onClick={onRemovedQuoteWidget}
             >
               <img src="/x.svg" className="w-4 h-4" alt="close-icon" />
