@@ -47,7 +47,7 @@ function App() {
       />
       <div className="flex flex-wrap gap-6 justify-center -mt-16 mb-4">
         {!isHolidayWidgetRemoved && (
-          <div className="w-full sm:w-1/3 border border-gray-300 dark:bg-transparent rounded-md px-6 py-4">
+          <div className="w-full sm:w-[36%] border border-gray-300 dark:bg-transparent rounded-md px-6 py-4">
             <div className="flex justify-between">
               <h3 className="font-semibold mb-3">
                 {new Date().toLocaleString("en-EN", { month: "long" })}'s public holidays 🏝️
@@ -85,7 +85,7 @@ function App() {
         )}
 
         {!isPrayTimeWidgetRemoved && (
-          <div className="w-full sm:w-1/3 border border-gray-300 dark:bg-transparent rounded-md px-6 py-4">
+          <div className="w-full sm:w-[36%] border border-gray-300 dark:bg-transparent rounded-md px-6 py-4">
             <div className="mb-2">
               <div className="flex justify-between">
                 <h3 className="font-semibold">
@@ -110,19 +110,19 @@ function App() {
             {isLoadingPrayTime && <p>Loading prayer time...</p>}
             {prayTime && (
               <>
-                <div className="flex">
+                <div className="flex mb-1">
                   <p className="w-[90px]">1. Fajr </p>
                   <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.subuh)}</p>
                 </div>
-                <div className="flex">
+                <div className="flex mb-1">
                   <p className="w-[90px]">2. Dhuhr </p>
                   <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.dzuhur)}</p>
                 </div>
-                <div className="flex">
+                <div className="flex mb-1">
                   <p className="w-[90px]">3. Asr </p>
                   <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.ashar)}</p>
                 </div>
-                <div className="flex">
+                <div className="flex mb-1">
                   <p className="w-[90px]">4. Maghrib </p>
                   <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.maghrib)}</p>
                 </div>
