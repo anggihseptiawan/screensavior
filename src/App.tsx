@@ -110,19 +110,19 @@ function App() {
             {isLoadingPrayTime && <p>Loading prayer time...</p>}
             {prayTime && (
               <>
-                <div className="flex mb-1">
+                <div className="flex">
                   <p className="w-[90px]">1. Fajr </p>
                   <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.subuh)}</p>
                 </div>
-                <div className="flex mb-1">
+                <div className="flex">
                   <p className="w-[90px]">2. Dhuhr </p>
                   <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.dzuhur)}</p>
                 </div>
-                <div className="flex mb-1">
+                <div className="flex">
                   <p className="w-[90px]">3. Asr </p>
                   <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.ashar)}</p>
                 </div>
-                <div className="flex mb-1">
+                <div className="flex">
                   <p className="w-[90px]">4. Maghrib </p>
                   <p>: &nbsp; {hourFormat(prayTime.prayers[day - 1].time.maghrib)}</p>
                 </div>

@@ -4,7 +4,7 @@ import { Holiday, PrayTime } from "../types/all"
 export const quotesFetcher = () =>
   fetch(`${API_URL_RANDOM_QUOTE}/quotes/random`)
     .then((res) => res.json())
-    .then((data) => data[0].content)
+    .then((data) => `${data[0].content} ~ ${data[0].author || "Anonymous"}`)
 
 const date = new Date()
 export const holidaysFetcher = (): Promise<Holiday[]> =>
